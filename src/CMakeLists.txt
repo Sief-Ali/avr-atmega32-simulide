@@ -20,7 +20,7 @@ target_link_options(${PROJECT_NAME}.elf PRIVATE
     -mmcu=${MCU}
     -Wl,--gc-sections
 )
-target_link_libraries(${PROJECT_NAME}.elf PRIVATE led_driver)
+target_link_libraries(${PROJECT_NAME}.elf PRIVATE led_driver gpio_driver)
 
 add_custom_command(
     TARGET ${PROJECT_NAME}.elf
