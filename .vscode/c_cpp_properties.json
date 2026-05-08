@@ -1,0 +1,19 @@
+{
+  "configurations": [
+    {
+      "name": "avr-atmega32",
+      "includePath": [
+        "${workspaceFolder}/**"
+      ],
+      "compilerPath": "/usr/bin/avr-gcc",
+      "cStandard": "c11",
+      "cppStandard": "${default}",
+      "intelliSenseMode": "linux-gcc-x64",
+      "compilerArgs": [
+        "-mmcu=atmega32",
+        "-DF_CPU=16000000UL"
+      ]
+    }
+  ],
+  "version": 4
+}

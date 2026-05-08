@@ -1,0 +1,32 @@
+# AVR build output
+/build/
+/*.elf
+/*.hex
+/*.map
+/*.eep
+/*.lss
+/*.lst
+/*.o
+/*.a
+/*.d
+
+# CMake / clangd cache
+/.cache/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+compile_commands.json
+Makefile
+
+# Editor / OS
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# Python (tools, idf.py venvs)
+__pycache__/
+*.py[cod]
+.venv/
+venv/
