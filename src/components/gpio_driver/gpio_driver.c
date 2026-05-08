@@ -35,7 +35,7 @@ void gpio_driver_set_input_pullup(gpio_pin_t pin)
 
 void gpio_driver_write(gpio_pin_t pin, gpio_level_t level)
 {
-    if (level == GPIO_LEVEL_HIGH) {
+    if ((level && 1) == GPIO_LEVEL_HIGH) {
         *gpio_port_register(pin) |= (uint8_t)(1U << pin.bit);
     } else {
         *gpio_port_register(pin) &= (uint8_t) ~(1U << pin.bit);
@@ -49,5 +49,5 @@ void gpio_driver_toggle(gpio_pin_t pin)
 
 gpio_level_t gpio_driver_read(gpio_pin_t pin)
 {
-    return ((*gpio_pin_register(pin) & (uint8_t)(1U << pin.bit)) != 0U) ? GPIO_LEVEL_HIGH : GPIO_LEVEL_LOW;
+  return (gpio_level_t)((*gpio_pin_register(pin) & (uint8_t)(1U << pin.bit)) != 0U);
 }

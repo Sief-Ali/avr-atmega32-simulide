@@ -17,8 +17,8 @@ typedef struct {
 
 typedef bool gpio_level_t;
 
-#define GPIO_LEVEL_LOW false
-#define GPIO_LEVEL_HIGH true
+#define GPIO_LEVEL_LOW  ((gpio_level_t)false)
+#define GPIO_LEVEL_HIGH ((gpio_level_t)true)
 
 #define GPIO_PIN_A0 ((gpio_pin_t){GPIO_PORT_A, PA0})
 #define GPIO_PIN_A1 ((gpio_pin_t){GPIO_PORT_A, PA1})
