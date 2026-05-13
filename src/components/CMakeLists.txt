@@ -1,0 +1,23 @@
+# CMake build : components
+
+#configure variables
+set(COMP_NAME "${PROJECT_NAME}comp")
+#configure directories
+
+set(COMPONENTS_MODULE_PATH "${PROJECT_SOURCE_DIR}/lib")
+set(COMPONENTS_SRC_PATH  "${COMPONENTS_MODULE_PATH}/src" )
+set(COMPONENTS_INCLUDE_PATH  "${COMPONENTS_MODULE_PATH}/include")
+#set includes
+include_directories(${COMPONENTS_INCLUDE_PATH})
+
+
+#set sources
+file(GLOB COMP_HEADER_FILES "${COMPONENTS_INCLUDE_PATH}/*.h")
+file(GLOB COMP_SOURCE_FILES "${COMPONENTS_SRC_PATH}/*.cpp")
+
+#set library
+add_library(${COMP_NAME} STATIC IMPORTED ${COMP_SOURCE_FILES} ${COMP_HEADER_FILES})
+
+#export vars
+set(COMPONENTS_INCLUDE_PATH  ${COMPONENTS_INCLUDE_PATH} PARENT_SCOPE)
+set(COMP_NAME ${COMP_NAME} PARENT_SCOPE)
