@@ -8,7 +8,7 @@
 #define LED_PIN GPIO_PIN_B0
 #define SWITCH_PIN GPIO_PIN_A1
 
-void app_main(void)
+int main(void)
 {
     // Initialize the LED driver
     led_driver_init(LED_PIN);
