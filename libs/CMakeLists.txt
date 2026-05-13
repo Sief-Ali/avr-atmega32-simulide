@@ -13,7 +13,9 @@ include_directories(${LIBRARY_INCLUDE_PATH})
 
 #set sources
 file(GLOB LIB_HEADER_FILES "${LIBRARY_INCLUDE_PATH}/*.h")
-file(GLOB LIB_SOURCE_FILES "${LIBRARY_SRC_PATH}/*.cpp")
+file(GLOB LIB_SOURCE_FILES
+    "${LIBRARY_SRC_PATH}/*.c"
+)
 
 #set library
 add_library(${LIB_NAME} STATIC IMPORTED ${LIB_SOURCE_FILES} ${LIB_HEADER_FILES})
