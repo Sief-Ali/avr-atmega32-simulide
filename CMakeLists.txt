@@ -15,5 +15,6 @@ set(F_CPU 16000000UL CACHE STRING "CPU frequency in Hz")
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_C_STANDARD_REQUIRED ON)
 
+add_subdirectory(libs)
 add_subdirectory(src)
 
