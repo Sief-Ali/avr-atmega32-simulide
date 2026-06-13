@@ -17,6 +17,21 @@ set(F_CPU 16000000UL CACHE STRING "CPU frequency in Hz")
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_C_STANDARD_REQUIRED ON)
 
+add_library(avr_options INTERFACE)
+target_compile_definitions(avr_options INTERFACE F_CPU=${F_CPU})
+target_compile_options(avr_options INTERFACE
+    -mmcu=${MCU}
+    -Wall
+    -Wextra
+    -Wpedantic
+    -Os
+    -ffunction-sections
+    -fdata-sections
+)
+target_link_options(avr_options INTERFACE
+    -mmcu=${MCU}
+    -Wl,--gc-sections
+)
+
 add_subdirectory(libs)
 add_subdirectory(src)
-

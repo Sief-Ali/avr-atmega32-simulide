@@ -2,23 +2,33 @@
 
 #configure variables
 set(COMP_NAME "${PROJECT_NAME}comp")
-#configure directories
 
-set(COMPONENTS_MODULE_PATH "${PROJECT_SOURCE_DIR}/lib")
+#configure directories
+set(COMPONENTS_MODULE_PATH "${PROJECT_SOURCE_DIR}/src/components")
 set(COMPONENTS_SRC_PATH  "${COMPONENTS_MODULE_PATH}/src" )
 set(COMPONENTS_INCLUDE_PATH  "${COMPONENTS_MODULE_PATH}/include")
-#set includes
-include_directories(${COMPONENTS_INCLUDE_PATH})
-
 
 #set sources
-file(GLOB COMP_HEADER_FILES "${COMPONENTS_INCLUDE_PATH}/*.h")
-file(GLOB COMP_SOURCE_FILES
+file(GLOB COMP_HEADER_FILES CONFIGURE_DEPENDS "${COMPONENTS_INCLUDE_PATH}/*.h")
+file(GLOB COMP_SOURCE_FILES CONFIGURE_DEPENDS
     "${COMPONENTS_SRC_PATH}/*.c"
 )
 
 #set library
-add_library(${COMP_NAME} STATIC IMPORTED ${COMP_SOURCE_FILES} ${COMP_HEADER_FILES})
+add_library(${COMP_NAME} STATIC
+    ${COMP_SOURCE_FILES}
+    ${COMP_HEADER_FILES}
+)
+
+# expose includes
+target_include_directories(${COMP_NAME}
+    PUBLIC
+        ${COMPONENTS_INCLUDE_PATH}
+)
+target_link_libraries(${COMP_NAME}
+    PUBLIC
+        avr_options
+)
 
 #export vars
 set(COMPONENTS_INCLUDE_PATH  ${COMPONENTS_INCLUDE_PATH} PARENT_SCOPE)

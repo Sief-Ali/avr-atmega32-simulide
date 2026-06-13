@@ -17,21 +17,12 @@ file (GLOB MAIN_SOURCE_FILE "${MAIN_SRC_PATH}/main.c")
 #set target executable
 add_executable (${PROJECT_NAME}.elf ${MAIN_SOURCE_FILE})
 
-target_compile_definitions(${PROJECT_NAME}.elf PRIVATE F_CPU=${F_CPU})
-target_compile_options(${PROJECT_NAME}.elf PRIVATE
--mmcu=${MCU}
--Wall
--Wextra
--Wpedantic
--Os
--ffunction-sections
--fdata-sections
+target_link_libraries(${PROJECT_NAME}.elf
+    PRIVATE
+        avr_options
+        ${COMP_NAME}
+        ${LIB_NAME}
 )
-target_link_options(${PROJECT_NAME}.elf PRIVATE
-    -mmcu=${MCU}
-    -Wl,--gc-sections
-)
-target_link_libraries(${PROJECT_NAME}.elf ${LIB_NAME} ${COMP_NAME})
 
 add_custom_command(
   TARGET ${PROJECT_NAME}.elf
