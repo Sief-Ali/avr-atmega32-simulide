@@ -18,8 +18,9 @@ add_executable (${PROJECT_NAME}.elf ${MAIN_SOURCE_FILE})
 target_link_libraries(${PROJECT_NAME}.elf
     PRIVATE
         avr_options
-        led_driver
         gpio_driver
+        led_driver
+        btn_driver
         ${LIB_NAME}
 )
 

@@ -5,8 +5,8 @@
 #include "led_driver.h"
 
 #define DELAY_TIME 1000
-#define LED_PIN GPIO_PIN_B0
-#define SWITCH_PIN GPIO_PIN_A1
+#define LED_PIN GPIO_PB0
+#define SWITCH_PIN GPIO_PA1
 
 int main(void)
 {
