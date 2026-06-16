@@ -10,8 +10,6 @@ set (MAIN_NAME "${PROJECT_NAME}main")
 set (MAIN_MODULE_PATH "${PROJECT_SOURCE_DIR}/src")
 set (MAIN_SRC_PATH  "${MAIN_MODULE_PATH}/" )
 
-include_directories (${LIBRARY_INCLUDE_PATH} ${COMPONENTS_INCLUDE_PATH})
-
 file (GLOB MAIN_SOURCE_FILE "${MAIN_SRC_PATH}/main.c")
 
 #set target executable
@@ -20,7 +18,8 @@ add_executable (${PROJECT_NAME}.elf ${MAIN_SOURCE_FILE})
 target_link_libraries(${PROJECT_NAME}.elf
     PRIVATE
         avr_options
-        ${COMP_NAME}
+        led_driver
+        gpio_driver
         ${LIB_NAME}
 )
 

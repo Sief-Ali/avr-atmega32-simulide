@@ -20,7 +20,7 @@ int main(void)
         // Read the switch level
         bool switch_level = gpio_driver_read(SWITCH_PIN);
         // Set the LED level
-        led_driver_set(switch_level);
+        led_driver_set(LED_PIN, switch_level);
         // Delay for the specified time
         _delay_ms(DELAY_TIME);
     }
